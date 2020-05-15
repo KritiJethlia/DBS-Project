@@ -7,8 +7,9 @@ public class closure
     static int n;
     static int m;
     public static void main(String[] args) {
-        input(5,4);  //calling without object
+        input(4,3);  //calling without object
       }
+
     public static void calc_closure(String attribute[], String FD[])
     {
         int x=-1;
@@ -148,6 +149,7 @@ public class closure
 
     public static void candidateKey(int ptr[], String attribute[],ArrayList <ArrayList<Integer>> multipleFD){
         Vector <Vector<String>> ckey= new Vector<Vector<String>>();
+        Vector <Vector<String>> superkey= new Vector<Vector<String>>();
         for(int i=0;i<n;++i)//append individual elements to multipleFD array
         {
             ArrayList<Integer> temp= new ArrayList<Integer>();
@@ -193,7 +195,10 @@ public class closure
         }
         System.out.println("Superkeys:");
     for(int i=0;i<ckey.size();++i)
-        System.out.println(ckey.elementAt(i)+" "); 
+    {
+        superkey.add(ckey.elementAt(i));
+        System.out.println(superkey.elementAt(i)+" ");
+    } 
         
     for(int i=0;i<n;i++)//
         {
