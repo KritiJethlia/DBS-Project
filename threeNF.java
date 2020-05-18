@@ -103,6 +103,7 @@ public class threeNF
         // {
         //     System.out.println(relation.get(i));
         // }
+        ArrayList<Integer> finalRelations= new ArrayList<Integer>();
         for(int i=0;i<relation.size();i++)
         {
             int p=0;
@@ -110,7 +111,7 @@ public class threeNF
             {
                p=p|(int)Math.pow(2,Arrays.asList(attribute).indexOf(relation.get(i).get(j))); 
             }
-           // System.out.println(p);
+           finalRelations.add(p);
         }
 
     }
