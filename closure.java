@@ -369,6 +369,39 @@ public class closure
                     }
                 }
             }
+            System.out.print("FD :");
+            if(FDcovered.size()==0)
+             System.out.print("None");
+            for(int j=0;j<FDcovered.size();++j)
+            {
+                System.out.println();
+                ArrayList <String> Fdleft = new ArrayList <String>();
+                ArrayList <String> Fdright = new ArrayList <String>();
+                for(int k=0;k<attribute.length;k++)
+                {
+                    int p=(int)Math.pow(2,k);
+                    if((FDcovered.get(j).get(0) & p)==p)
+                    {
+                        Fdleft.add(attribute[k]);    
+                    }
+                    if((FDcovered.get(j).get(1) & p)==p)
+                    {
+                        Fdright.add(attribute[k]);    
+                    }
+                }
+                System.out.print(Fdleft.get(0));
+                for(int k=1;k<Fdleft.size();k++)
+                {
+                    System.out.print(","+Fdleft.get(k));
+                }
+                System.out.print("->");
+                System.out.print(Fdright.get(0));
+                for(int k=1;k<Fdright.size();k++)
+                {
+                    System.out.print(","+Fdright.get(k));
+                }
+            }
+            System.out.println();
            // System.out.println("FD "+FDcovered.size() +" R1 "+ R1.length);
             cal_key(FDcovered,attribute,R1,relation.get(i));
           // System.out.println("");
