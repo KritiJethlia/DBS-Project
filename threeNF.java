@@ -97,10 +97,20 @@ public class threeNF
             }
 
         }
-        System.out.println(primary);
-        for(int i=0;i<relation.size();++i)
+        //System.out.println(primary);
+        relation.add(primary);
+        // for(int i=0;i<relation.size();++i)
+        // {
+        //     System.out.println(relation.get(i));
+        // }
+        for(int i=0;i<relation.size();i++)
         {
-            System.out.println(relation.get(i));
+            int p=0;
+            for(int j=0;j<relation.get(i).size();j++)
+            {
+               p=p|(int)Math.pow(2,Arrays.asList(attribute).indexOf(relation.get(i).get(j))); 
+            }
+           // System.out.println(p);
         }
 
     }

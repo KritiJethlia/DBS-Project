@@ -8,7 +8,7 @@ public class closure
     static int m;
     public static void main(String[] args) 
     {
-        input(6,3);  //calling without object
+        input(10,5);  //calling without object
     }
 
     public static void calc_closure(String attribute[], String FD[])
@@ -329,5 +329,124 @@ public class closure
         {
             System.out.println(Bin[i][0]+"->"+Bin[i][1]);
         }
+    } 
+
+    // Finding candidate Keys and super keys for the relations formed after decomposition
+    public static void finalKeys(ArrayList<Integer>relation ,int[][]binaryFD ,String attribute[])// input :relation in binary format ,initial Fds in binary format ,all attributes
+    {
+        for(int i=0;i<relation.size();++i)
+        {
+            System.out.print("\n\n");
+            System.out.println("Relation "+ (i+1));
+            ArrayList <ArrayList<Integer>> FDcovered= new ArrayList <ArrayList<Integer>>();
+            ArrayList<String> R= new ArrayList<String>();
+           
+           // System.out.println(relation.get(i));
+            for(int j=0;j<attribute.length;++j)//check which all attributes are present in given relation
+            {
+                int p=(int)Math.pow(2,j);
+                if((relation.get(i) & p)==p)
+                {
+                    R.add(attribute[j]);    
+                }
+            }
+            System.out.println(R);
+            String R1[]= new String[R.size()];//converting it to string array
+            for(int j=0;j<R.size();j++)
+            {
+                R1[j]=R.get(j);
+            }
+            for(int j=0;j<binaryFD.length ;j++)
+            {
+                if((relation.get(i)&binaryFD[j][0])== binaryFD[j][0])//check if the left side attributes of fd are present in relation
+                {
+                    if((relation.get(i)&binaryFD[j][1])!=0)// check if they are present on right side
+                    {
+                        ArrayList<Integer> temp= new ArrayList<Integer>();
+                        temp.add(relation.get(i)&binaryFD[j][0]);
+                        temp.add(relation.get(i)&binaryFD[j][1]);
+                        FDcovered.add(temp);
+                    }
+                }
+            }
+           // System.out.println("FD "+FDcovered.size() +" R1 "+ R1.length);
+            cal_key(FDcovered,attribute,R1,relation.get(i));
+          // System.out.println("");
+        }
     }
+    public static void cal_key(ArrayList <ArrayList<Integer>> FDcovered ,String attribute[],String R1[],int relation)
+    {
+        Vector <Vector<String>> ckey= new Vector<Vector<String>>();
+        Vector <Vector<String>> superkey= new Vector<Vector<String>>();
+        int n1= attribute.length;
+        int n2=R1.length;
+        for(int i=1;i<=n2;++i)//no of elements in a candidate key
+        {
+            String data[] = new String[i]; 
+            combinationUtil(R1,data,0,n2-1,0,i,ckey);//generates all combinations and stores in ckey
+        }
+        for(int i=0;i<ckey.size();i++)
+        {
+            int ans=0;
+            for(int j=0;j<ckey.get(i).size();j++)
+            {
+                ans=ans|(int)Math.pow(2,Arrays.asList(attribute).indexOf(ckey.get(i).get(j)));
+            }
+           // System.out.println(ckey.get(i)+"="+ans+" ");
+            boolean change=true;
+            while(change)//run till a change happens in any of the iteration
+            {
+                int temp=ans;
+                for(int j=0;j<FDcovered.size();++j)
+                {
+                    if((ans & FDcovered.get(j).get(0))== FDcovered.get(j).get(0))//if element exists then check
+                    {
+                      ans=ans|FDcovered.get(j).get(1);
+                    }
+                }
+                if(temp==ans)
+                 change=false;
+            }
+            
+            if(ans!= relation )//remove the ones that don't give all the attributes
+            {
+                ckey.removeElementAt(i);
+                i--;
+            }
+        }
+        System.out.print("\nSuperkeys:  ");
+        for(int i=0;i<ckey.size();++i)
+        {
+            superkey.add(ckey.elementAt(i));
+            System.out.print(superkey.elementAt(i)+" ");
+        } 
+        for(int i=0;i<n2;i++)//
+        {
+            int min=n2;
+            
+            for(int j=0;j<ckey.size();++j)//for each attribute find the min size
+            {
+                // System.out.print(ckey.elementAt(j)+" ");
+                if(ckey.get(j).lastIndexOf(attribute[i])!=-1)
+                {
+                    if(ckey.get(j).size() < min)
+                    min=ckey.get(j).size();
+                }
+            }
+            for(int j=0;j<ckey.size();++j)
+            {
+                if(ckey.get(j).lastIndexOf(attribute[i])!=-1)
+                {
+                    if(ckey.get(j).size() > min)//if a key with size greater than min size exists remove it
+                    {
+                     ckey.removeElementAt(j);
+                     j--;
+                    }
+                }
+            }
+        }
+        System.out.print("\nCandidate Keys : ");
+        for(int i=0;i<ckey.size();++i)
+        System.out.print(ckey.elementAt(i)+" ");
+        }
 }
