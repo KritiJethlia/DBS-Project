@@ -2,12 +2,12 @@ import java.io.*;
 import java.lang.*;
 import java.util.*;
 public class closure
-{   //assume there's an array containing names of attributes 
+{   //assume there's an array containing names of attributes
     //array containing Func Dep as a string  "A,B->C" or "A->B,C"
     static int alpha=0,beta=0,gamma=0;
     static int n;
     static int m;
-    public static void main(String[] args) 
+    public static void main(String[] args)
     {
         Scanner sc = new Scanner(System.in);
         int x = sc.nextInt();
@@ -33,7 +33,7 @@ public class closure
             cl[i]=0;
         }
         for(i=0;i<n;i++)
-        { 
+        {
             for(j=0;j<m;j++)
             {
                 if(FD[j].indexOf('-')!=-1)
@@ -53,7 +53,7 @@ public class closure
             {
                 //System.out.print("y");
                 for(i=0;i<n;i++)
-                {   
+                {
                     for(j=0;j<m;j++)
                     {
                         x = FD[j].indexOf("-");
@@ -65,7 +65,7 @@ public class closure
                         for(int k=0;k<str.length;k++)
                         {
                             if(closure[i].indexOf(str[k])==-1)
-                            {   
+                            {
                                 flag = 1;
                                 break;
                             }
@@ -124,7 +124,7 @@ public class closure
                                     closure[i] = closure[i]+" "+str1[k];
                                 }
                             }
-                        }  
+                        }
                     }
                     if(trial==0) //ADDED
                     {
@@ -146,7 +146,7 @@ public class closure
         display(closure,attribute,FD);
         candidateKey(binaryclo, attribute,FD,multipleFD);
     }
-    
+
     public static void display(String ptr[], String attribute[], String FD[])
     {
         for(int i=0;i<ptr.length;i++)
@@ -185,8 +185,8 @@ public class closure
         }
         for(int i=1;i<=n;++i)//no of elements in a candidate key
         {
-           
-            String data[] = new String[i]; 
+
+            String data[] = new String[i];
             combinationUtil(attribute,data,0,n-1,0,i,ckey);//generates all combinations and stores in ckey
         }
         // for(int i=0;i<multipleFD.size();++i)
@@ -212,7 +212,7 @@ public class closure
                 if(temp==ans)
                  change=false;
             }
-            
+
             if(ans!= (int)(Math.pow(2,n)-1))//remove the ones that don't give all the attributes
             {
                 ckey.removeElementAt(i);
@@ -224,11 +224,11 @@ public class closure
         {
             superkey.add(ckey.elementAt(i));
             System.out.println(superkey.elementAt(i)+" ");
-        } 
+        }
         for(int i=0;i<n;i++)//
         {
             int min=n;
-            
+
             for(int j=0;j<ckey.size();++j)//for each attribute find the min size
             {
                 // System.out.print(ckey.elementAt(j)+" ");
@@ -263,7 +263,7 @@ public class closure
                 key = key | (int)Math.pow(2,index);
             }
             binsuper[i]=key;
-        } 
+        }
         int bincandidate[]  = new int [ckey.size()];//binary candidate keys calculated
         for(int i=0;i<ckey.size();++i)
         {
@@ -297,33 +297,33 @@ public class closure
             }
         }
     }
-    
-    static void combinationUtil(String arr[], String data[], int start, int end, int index, int r,Vector <Vector<String>> ckey) 
-    { 
-        // Current combination is ready to be printed, print it 
-        if (index == r) 
-        { 
+
+    static void combinationUtil(String arr[], String data[], int start, int end, int index, int r,Vector <Vector<String>> ckey)
+    {
+        // Current combination is ready to be printed, print it
+        if (index == r)
+        {
             Vector <String> temp= new Vector<String>();
-            for (int j=0; j<r; j++) 
+            for (int j=0; j<r; j++)
                 temp.add(data[j]);
             ckey.add(temp);
-            return; 
-        } 
-  
-        // replace index with all possible elements. The condition 
-        // "end-i+1 >= r-index" makes sure that including one element 
-        // at index will make a combination with remaining elements 
-        // at remaining positions 
-        for (int i=start; i<=end && end-i+1 >= r-index; i++) 
-        { 
-            data[index] = arr[i]; 
-            combinationUtil(arr, data, i+1, end, index+1, r,ckey); 
-        } 
-    } 
-    
+            return;
+        }
+
+        // replace index with all possible elements. The condition
+        // "end-i+1 >= r-index" makes sure that including one element
+        // at index will make a combination with remaining elements
+        // at remaining positions
+        for (int i=start; i<=end && end-i+1 >= r-index; i++)
+        {
+            data[index] = arr[i];
+            combinationUtil(arr, data, i+1, end, index+1, r,ckey);
+        }
+    }
+
     public static void keybin(String attribute[], String FD[],int Bin[][])
     {
-        
+
         int d = 0;
         for(int i=0;i<m;i++)
         {
@@ -349,7 +349,7 @@ public class closure
         {
             System.out.println(Bin[i][0]+"->"+Bin[i][1]);
         }*/
-    } 
+    }
 
     // Finding candidate Keys and super keys for the relations formed after decomposition
     public static void finalKeys(ArrayList<Integer>relation ,int[][]binaryFD ,String attribute[])// input :relation in binary format ,initial Fds in binary format ,all attributes
@@ -368,12 +368,12 @@ public class closure
                 int p=(int)Math.pow(2,j);
                 if((relation.get(i) & p)==p)
                 {
-                    R.add(attribute[j]);    
+                    R.add(attribute[j]);
                 }
             }
             System.out.println(R);
             String R1[]= new String[R.size()];//converting it to string array
-            
+
             for(int j=0;j<R.size();j++)
             {
                 R1[j]=R.get(j);
@@ -405,11 +405,11 @@ public class closure
                     int p=(int)Math.pow(2,k);
                     if((FDcovered.get(j).get(0) & p)==p)
                     {
-                        Fdleft.add(attribute[k]);    
+                        Fdleft.add(attribute[k]);
                     }
                     if((FDcovered.get(j).get(1) & p)==p)
                     {
-                        Fdright.add(attribute[k]);    
+                        Fdright.add(attribute[k]);
                     }
                 }
                 System.out.print(Fdleft.get(0));
@@ -438,7 +438,7 @@ public class closure
         int n2=R1.length;
         for(int i=1;i<=n2;++i)//no of elements in a candidate key
         {
-            String data[] = new String[i]; 
+            String data[] = new String[i];
             combinationUtil(R1,data,0,n2-1,0,i,ckey);//generates all combinations and stores in ckey
         }
         for(int i=0;i<ckey.size();i++)
@@ -463,7 +463,7 @@ public class closure
                 if(temp==ans)
                  change=false;
             }
-            
+
             if(ans!= relation )//remove the ones that don't give all the attributes
             {
                 ckey.removeElementAt(i);
@@ -475,11 +475,11 @@ public class closure
         {
             superkey.add(ckey.elementAt(i));
             System.out.print(superkey.elementAt(i)+" ");
-        } 
-        for(int i=0;i<n2;i++)//
+        }
+        for(int i=0;i<n1;i++)//
         {
-            int min=n2;
-            
+            int min=n1;
+
             for(int j=0;j<ckey.size();++j)//for each attribute find the min size
             {
                 // System.out.print(ckey.elementAt(j)+" ");
@@ -501,8 +501,9 @@ public class closure
                 }
             }
         }
-        System.out.print("\nCandidate Keys : ");
+        System.out.println();
+        System.out.println("Candidate Keys : ");
         for(int i=0;i<ckey.size();++i)
         System.out.print(ckey.elementAt(i)+" ");
-        }
+      }
 }
