@@ -7,6 +7,7 @@ package mypackage;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -15,6 +16,18 @@ import javax.swing.table.DefaultTableModel;
  * @author sristi
  */
 public class MyFirstForm extends javax.swing.JFrame {
+static int alpha=0;
+static int beta=0;
+static int n=0,m=0;
+static int gamma=0;
+static int count = 0;
+static ArrayList<Integer> relation = new ArrayList<Integer>();
+static ArrayList<Integer> finalRelations= new ArrayList<Integer>();
+//    public void printing2NF() {
+//        this.HighestNF.setText("2NF");        
+//    }
+
+   
 
     /**
      * Creates new form MyFirstForm
@@ -32,327 +45,1257 @@ public class MyFirstForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+        Heading = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        noOfFDs = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel3 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        noOfColumns = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        columnNames = new javax.swing.JTextArea();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        superKeys = new javax.swing.JTextArea();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        CandidateKeys = new javax.swing.JTextArea();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        HighestNF = new javax.swing.JTextArea();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        fdNames = new javax.swing.JTextArea();
         jButton5 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        DecomposedRelations = new javax.swing.JTextArea();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        DecomposedFDs = new javax.swing.JTextArea();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        DecomposedSKs = new javax.swing.JTextArea();
+        jLabel13 = new javax.swing.JLabel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        DecomposedCKs = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Normalisation");
-        setBackground(new java.awt.Color(0, 204, 153));
-        setForeground(java.awt.Color.black);
+        setBackground(new java.awt.Color(0, 0, 0));
+        setForeground(new java.awt.Color(255, 255, 255));
         setIconImages(null);
+        setSize(new java.awt.Dimension(1150, 500));
 
-        jTextField1.setToolTipText("This will automatically create columns n columns with the first n alphabets");
-        jTextField1.setAutoscrolls(false);
-        jTextField1.setBorder(null);
+        Heading.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTextField2.setToolTipText("this will create m fuctional dependencies that u will enter next");
-        jTextField2.setBorder(null);
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        jLabel2.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jLabel2.setText("Welcome");
+
+        jPanel3.setBackground(new java.awt.Color(32, 47, 90));
+
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Enter Number of Functional dependencies");
+
+        noOfFDs.setBackground(new java.awt.Color(32, 47, 90));
+        noOfFDs.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        noOfFDs.setForeground(new java.awt.Color(255, 255, 255));
+        noOfFDs.setToolTipText("This will automatically create columns n columns with the first n alphabets");
+        noOfFDs.setAutoscrolls(false);
+        noOfFDs.setBorder(null);
+        noOfFDs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                noOfFDsActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Record my table");
-        jButton1.setAlignmentX(0.5F);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jLabel3.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Enter Number of elements");
+
+        noOfColumns.setBackground(new java.awt.Color(32, 47, 90));
+        noOfColumns.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        noOfColumns.setForeground(new java.awt.Color(255, 255, 255));
+        noOfColumns.setToolTipText("This will automatically create columns n columns with the first n alphabets");
+        noOfColumns.setAutoscrolls(false);
+        noOfColumns.setBorder(null);
+        noOfColumns.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                noOfColumnsActionPerformed(evt);
             }
         });
 
         jScrollPane1.setBorder(null);
         jScrollPane1.setOpaque(false);
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jTextArea2.setToolTipText("Enter the Names of columns one below the other");
-        jTextArea2.setBorder(null);
-        jTextArea2.addCaretListener(new javax.swing.event.CaretListener() {
+        columnNames.setBackground(new java.awt.Color(153, 153, 255));
+        columnNames.setColumns(5);
+        columnNames.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        columnNames.setRows(3);
+        columnNames.setToolTipText("Enter the Names of columns one below the other");
+        columnNames.setBorder(null);
+        columnNames.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                jTextArea2CaretUpdate(evt);
+                columnNamesCaretUpdate(evt);
             }
         });
-        jScrollPane1.setViewportView(jTextArea2);
+        jScrollPane1.setViewportView(columnNames);
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Enter the column Names");
+
+        jPanel2.setBackground(new java.awt.Color(0, 18, 50));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Super Keys");
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Candidate Keys");
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("Highest NF");
+
+        superKeys.setColumns(2);
+        superKeys.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        superKeys.setRows(5);
+        jScrollPane5.setViewportView(superKeys);
+
+        CandidateKeys.setColumns(2);
+        CandidateKeys.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        CandidateKeys.setRows(5);
+        jScrollPane6.setViewportView(CandidateKeys);
+
+        HighestNF.setColumns(1);
+        HighestNF.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        HighestNF.setRows(1);
+        jScrollPane7.setViewportView(HighestNF);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(89, 89, 89)
+                        .addComponent(jLabel6))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(40, 40, 40)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel12))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(222, 222, 222))
+        );
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Enter functional dependencies");
 
         jScrollPane2.setBorder(null);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setToolTipText("Enter FDs of the form A,B->C,D,E without spaces");
-        jTextArea1.setBorder(null);
-        jScrollPane2.setViewportView(jTextArea1);
+        fdNames.setColumns(5);
+        fdNames.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        fdNames.setRows(2);
+        fdNames.setToolTipText("Enter FDs of the form A,B->C,D,E without spaces");
+        fdNames.setBorder(null);
+        jScrollPane2.setViewportView(fdNames);
 
-        jScrollPane3.setBorder(null);
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Column 1", "Column 2", "Column 3", "Column 4"
-            }
-        ));
-        jScrollPane3.setViewportView(jTable1);
-
-        jScrollPane4.setBorder(null);
-
-        jTextArea3.setColumns(5);
-        jTextArea3.setRows(2);
-        jTextArea3.setToolTipText("Enter the column values one below the other");
-        jTextArea3.setBorder(null);
-        jScrollPane4.setViewportView(jTextArea3);
-
-        jLabel5.setText("Add Columns here:");
-
-        jLabel6.setText("Your Table:");
-
-        jButton3.setText("Update Row");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButton5.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        jButton5.setText("Record Details");
+        jButton5.setActionCommand("Record FDs");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButton5ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Clear");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(258, 258, 258)
+                        .addComponent(jLabel8)
+                        .addContainerGap())
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(noOfFDs, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(noOfColumns, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(noOfColumns, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(noOfFDs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(19, 19, 19)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(32, 32, 32)
+                        .addComponent(jButton5)
+                        .addGap(222, 222, 222))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
 
-        jButton4.setText("Delete Selected Row");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
+        jPanel1.setBackground(new java.awt.Color(106, 116, 145));
 
-        jLabel7.setText("Enter functional dependencies");
+        jLabel9.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Decomposed Relations");
 
-        jLabel8.setText("Enter Number of elements");
+        DecomposedRelations.setColumns(5);
+        DecomposedRelations.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        DecomposedRelations.setRows(5);
+        jScrollPane3.setViewportView(DecomposedRelations);
 
-        jLabel9.setText("Enter Number of Functional dependencies");
+        DecomposedFDs.setColumns(5);
+        DecomposedFDs.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        DecomposedFDs.setRows(5);
+        jScrollPane4.setViewportView(DecomposedFDs);
 
-        jLabel10.setText("Enter the column Names");
+        jLabel10.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Decomposed Super keys");
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel11.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Decomposed Candidate keys");
+
+        DecomposedSKs.setColumns(5);
+        DecomposedSKs.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        DecomposedSKs.setRows(5);
+        jScrollPane8.setViewportView(DecomposedSKs);
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("Decomposed FDs");
+
+        DecomposedCKs.setColumns(5);
+        DecomposedCKs.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        DecomposedCKs.setRows(5);
+        jScrollPane9.setViewportView(DecomposedCKs);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 57, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(74, 74, 74)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3))
+                .addGap(48, 48, 48)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(56, 56, 56))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 755, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel11))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane4)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                    .addComponent(jScrollPane8)
+                    .addComponent(jScrollPane9))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton5.setText("Record Fuctional Dependencies");
+        javax.swing.GroupLayout HeadingLayout = new javax.swing.GroupLayout(Heading);
+        Heading.setLayout(HeadingLayout);
+        HeadingLayout.setHorizontalGroup(
+            HeadingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(HeadingLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        HeadingLayout.setVerticalGroup(
+            HeadingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HeadingLayout.createSequentialGroup()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(138, 138, 138)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(155, 155, 155)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
-                        .addGap(104, 104, 104)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(104, 104, 104)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel9))
-                                .addGap(84, 84, 84)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addGap(168, 168, 168)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 199, Short.MAX_VALUE)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(Heading, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10))
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton2)
-                    .addComponent(jButton4))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton5))
-                    .addComponent(jLabel7))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(Heading, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void columnNamesCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_columnNamesCaretUpdate
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int n = 0, m = 0,enteredn = 0,enteredm = 0 ;
+    }//GEN-LAST:event_columnNamesCaretUpdate
+
+    private void noOfColumnsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noOfColumnsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_noOfColumnsActionPerformed
+
+    private void noOfFDsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noOfFDsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_noOfFDsActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+            // TODO add your handling code here:
         try{
-            n =Integer.parseInt(this.jTextField1.getText());
+           n =Integer.parseInt(this.noOfColumns.getText());
         }
         catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(this,"Enter a valid number for text field 1");
-        }
+           JOptionPane.showMessageDialog(this,"Enter a valid number of columns");
+       }
         try{
-            m =Integer.parseInt(this.jTextField2.getText());
+           m =Integer.parseInt(this.noOfFDs.getText());
         }
         catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(this,"Enter a valid number for text field 2");
-        }        
-            enteredn =this.jTextArea2.getLineCount();
-            enteredm =this.jTextArea1.getLineCount();
-        if(enteredn != n && n!=0 && m!=0)
-            JOptionPane.showMessageDialog(this,"Enter "+ n +" column names you have entered "+ enteredn);
-        if(enteredm != m && m!=0 && n!=0)
-            JOptionPane.showMessageDialog(this,"Enter "+ m +" functional dependencies you have entered "+ enteredm);            
-       // this.jLabel3.setText(" You have entered "+ n +"and fd"+ m +" no of rows "+ enteredn + " no of fd "+ enteredm );
-        
-        String s2[] = jTextArea1.getText().split("\\r?\\n");
-        ArrayList<String>arrList2 = new ArrayList<>(Arrays.asList(s2)) ; 
-        
-       // System.out.println(arrList1); 
-        System.out.println(arrList2); 
-        String s1[] = jTextArea2.getText().split("\\r?\\n");
+           JOptionPane.showMessageDialog(this,"Enter a valid number of FDs");
+       }
+        int enteredn =this.columnNames.getLineCount();
+        int enteredm =this.fdNames.getLineCount();
+        int wrong=0;
+             if(enteredn != n && m!=0)
+             {
+                 JOptionPane.showMessageDialog(this,"Enter "+ n +" column names you have entered "+ enteredn);
+                 wrong=1;
+             }
+               
+             if(enteredm != m && m!=0)
+             {
+                JOptionPane.showMessageDialog(this,"Enter "+ m +" functional dependencies you have entered "+ enteredm);
+                wrong=1;
+             }
+     if(wrong==0)
+     {
+          String s1[] = columnNames.getText().split("\\r?\\n");
         ArrayList<String>arrList1 = new ArrayList<>(Arrays.asList(s1)) ;
+        System.out.println(arrList1);
         
+        String s2[] = fdNames.getText().split("\\r?\\n");
+        ArrayList<String>arrList2 = new ArrayList<>(Arrays.asList(s2)) ;
+        System.out.println(arrList2);
         
-        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
-        model.setColumnCount(0);
-        for (int i = 0; i < arrList1.size(); i++) 
-            model.addColumn(arrList1.get(i));
+        String FD[] = new String[m];
+        String attribute[] = new String[n];
+        for(int i=0;i<n;i++)
+            attribute[i] = arrList1.get(i);
+        for(int i=0;i<m;i++)
+            FD[i] = arrList2.get(i);
+        //this.superKeys.setText(arrList2);
+        calc_closure(attribute,FD);
         
-        //this.setVisible(false);
-        //new DisplayCandidateKeys().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jTextArea2CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextArea2CaretUpdate
-        // TODO add your handling code here:
+     }         
+       
         
-        
-    }//GEN-LAST:event_jTextArea2CaretUpdate
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        int noOfColumnsInAddingARow =this.jTextArea3.getLineCount();
-        int n =Integer.parseInt(this.jTextField1.getText());
-        if(n!=noOfColumnsInAddingARow)
+    }//GEN-LAST:event_jButton5ActionPerformed
+    public void calc_closure(String attribute[], String FD[])
+    {
+        int x=-1;
+        int flag=-1;
+        int cl[] = new int[n];
+        int binaryclo[] =new int [n];
+        String closure[] = new String[n];   //stores closures of all attributes
+        ArrayList <ArrayList<Integer>> multipleFD =new ArrayList<ArrayList<Integer>>();
+        int sizeArrlist=0;
+        int i,j;
+        String l="";
+        for(i=0;i<n;i++)
         {
-            JOptionPane.showMessageDialog(this,"Enter a correct number of Column Values");
+            closure[i] = ""+attribute[i];
+            binaryclo[i]=(int)Math.pow(2,i);//add element itself to the closure
+            cl[i]=0;
+        }
+        for(i=0;i<n;i++)
+        { 
+            for(j=0;j<m;j++)
+            {
+                if(FD[j].indexOf('-')!=-1)
+                l = FD[j].substring(0,FD[j].indexOf('-'));
+                if(l.indexOf(attribute[i])!=-1)
+                cl[i]++;
+            }
+            //System.out.println(cl[i]);
+        }
+        int p=0;
+        int trial = 0;
+        int checker = 0;
+        while(p<n)
+        {
+            //System.out.print("y");
+            while(cl[p]>0)
+            {
+                //System.out.print("y");
+                for(i=0;i<n;i++)
+                {   
+                    for(j=0;j<m;j++)
+                    {
+                        x = FD[j].indexOf("-");
+                        if(x==-1)
+                        continue;
+                        String y = FD[j].substring(0,x);
+                        int z = y.indexOf(attribute[i]);
+                        String str[] = y.split(",",n);
+                        for(int k=0;k<str.length;k++)
+                        {
+                            if(closure[i].indexOf(str[k])==-1)
+                            {   
+                                flag = 1;
+                                break;
+                            }
+                        }
+                        if(str.length>1)//if multiple attributes then
+                        {
+                            int leftsum =0;
+                            for(int k=0;k<str.length;++k)
+                            {
+                             int index = Arrays.asList(attribute).lastIndexOf(str[k]);
+                             leftsum = leftsum | (int)Math.pow(2,index);
+                            }
+                            ArrayList<Integer> temp= new ArrayList<Integer>();//create array list and append to multipleFD
+                            temp.add(leftsum);
+                            temp.add(leftsum);
+                            multipleFD.add(temp);
+                            sizeArrlist++;//increase size
+                            String y1 = FD[j].substring(x+2);
+                            String str1[] = y1.split(",",n);
+                            for(int k=0;k<str1.length;k++)
+                            {
+                                if(str.length>1)//add the attributes on right side and append to the array
+                                {
+                                    int index = Arrays.asList(attribute).lastIndexOf(str1[k]);
+                                    int temp2= multipleFD.get(sizeArrlist-1).get(1) | (int)Math.pow(2,index);
+                                    multipleFD.get(sizeArrlist-1).set(1,temp2);
+                                }
+                            }
+                        }
+                        if(flag==1)
+                        {
+                            flag=0;
+                            continue;
+                        }
+                        else
+                        {
+                            trial++;
+                            //cl[p]--;
+                            String y1 = FD[j].substring(x+2);
+                            String str1[] = y1.split(",",n);
+                            for(int k=0;k<str1.length;k++)
+                            {
+                                if(str.length>1)//add the attributes on right side and append to the array
+                                {
+                                    int index = Arrays.asList(attribute).lastIndexOf(str1[k]);
+                                    int temp2= multipleFD.get(sizeArrlist-1).get(1) | (int)Math.pow(2,index);
+                                    multipleFD.get(sizeArrlist-1).set(1,temp2);
+                                }
+                                if(closure[i].indexOf(str1[k])==-1)//add if it is not present already in closure
+                                {
+                                    if(Arrays.asList(attribute).lastIndexOf(str1[k])!=-1)
+                                    {
+                                         int index = Arrays.asList(attribute).lastIndexOf(str1[k]);
+                                         binaryclo[i]+=(int)Math.pow(2,index);
+                                    }
+                                    closure[i] = closure[i]+" "+str1[k];
+                                }
+                            }
+                        }  
+                    }
+                    if(trial==0) //ADDED
+                    {
+                        checker = 1;
+                        continue;
+                    }
+                    if(trial!=0)  //ADDED
+                    {
+                        cl[p]--;
+                        trial = 0;
+                    }
+                }
+                if(checker==1) //ADDED
+                break;
+            }
+            p++;
+            checker = 0;
+        }
+        display(closure,attribute,FD);
+        candidateKey(binaryclo, attribute,FD,multipleFD);
+    }
+    public static void display(String ptr[], String attribute[], String FD[])
+    {
+        for(int i=0;i<ptr.length;i++)
+        {
+            System.out.println("["+attribute[i]+"+] : "+ptr[i]+" ");
+        }
+        System.out.println();
+    }
+    static void combinationUtil(String arr[], String data[], int start, int end, int index, int r,Vector <Vector<String>> ckey) 
+    { 
+        // Current combination is ready to be printed, print it 
+        if (index == r) 
+        { 
+            Vector <String> temp= new Vector<String>();
+            for (int j=0; j<r; j++) 
+                temp.add(data[j]);
+            ckey.add(temp);
+            return; 
+        } 
+  
+        // replace index with all possible elements. The condition 
+        // "end-i+1 >= r-index" makes sure that including one element 
+        // at index will make a combination with remaining elements 
+        // at remaining positions 
+        for (int i=start; i<=end && end-i+1 >= r-index; i++) 
+        { 
+            data[index] = arr[i]; 
+            combinationUtil(arr, data, i+1, end, index+1, r,ckey); 
+        } 
+    } 
+    public void candidateKey(int ptr[], String attribute[],String FD[],ArrayList <ArrayList<Integer>> multipleFD){
+        Vector <Vector<String>> ckey= new Vector<Vector<String>>();
+        Vector <Vector<String>> superkey= new Vector<Vector<String>>();
+        //System.out.print("x");
+        for(int i=0;i<n;++i)//append individual elements to multipleFD array
+        {
+            ArrayList<Integer> temp= new ArrayList<Integer>();
+            temp.add((int)Math.pow(2,i));
+            temp.add(ptr[i]);
+            multipleFD.add(temp);
+        }
+        for(int i=1;i<=n;++i)//no of elements in a candidate key
+        {
+           
+            String data[] = new String[i]; 
+            combinationUtil(attribute,data,0,n-1,0,i,ckey);//generates all combinations and stores in ckey
+        }
+        // for(int i=0;i<multipleFD.size();++i)
+        // System.out.println(multipleFD.get(i)+" ");
+        for(int i=0;i<ckey.size();i++)//check if they can help in getting all attributes
+        {
+            int ans=0;
+            for(int j=0;j<ckey.get(i).size();j++)
+            {
+                ans=ans|ptr[Arrays.asList(attribute).indexOf(ckey.get(i).get(j))];
+            }
+            boolean change=true;
+            while(change)//run till a change happens in any of the iteration
+            {
+                int temp=ans;
+                for(int j=0;j<multipleFD.size();++j)
+                {
+                    if((ans & multipleFD.get(j).get(0))== multipleFD.get(j).get(0))//if element exists then check
+                    {
+                      ans=ans|multipleFD.get(j).get(1);
+                    }
+                }
+                if(temp==ans)
+                 change=false;
+            }
+            
+            if(ans!= (int)(Math.pow(2,n)-1))//remove the ones that don't give all the attributes
+            {
+                ckey.removeElementAt(i);
+                i--;
+            }
+        }
+        System.out.println("Superkeys:");
+//        for(String s : arrList2)
+//        {
+//            // Append each string from ArrayList to the end of text in JTextArea
+//            // separated by newline
+//            superKeys.append(s + System.getProperty("line.separator"));
+//        }
+        for(int i=0;i<ckey.size();++i)
+        {
+            superkey.add(ckey.elementAt(i));
+            System.out.println(superkey.elementAt(i)+" ");
+            superKeys.append(superkey.elementAt(i)+System.getProperty("line.separator"));
+        } 
+        for(int i=0;i<n;i++)//
+        {
+            int min=n;
+            
+            for(int j=0;j<ckey.size();++j)//for each attribute find the min size
+            {
+                // System.out.print(ckey.elementAt(j)+" ");
+                if(ckey.get(j).lastIndexOf(attribute[i])!=-1)
+                {
+                    if(ckey.get(j).size() < min)
+                    min=ckey.get(j).size();
+                }
+            }
+            for(int j=0;j<ckey.size();++j)
+            {
+                if(ckey.get(j).lastIndexOf(attribute[i])!=-1)
+                {
+                    if(ckey.get(j).size() > min)//if a key with size greater than min size exists remove it
+                    {
+                     ckey.removeElementAt(j);
+                     j--;
+                    }
+                }
+            }
+        }
+        System.out.println("Candidate Keys : ");
+        for(int i=0;i<ckey.size();++i)
+        {
+            System.out.print(ckey.elementAt(i)+" ");
+            CandidateKeys.append(superkey.elementAt(i)+System.getProperty("line.separator"));
+        }
+        
+        int[] binsuper = new int [superkey.size()];
+        for(int i=0;i<superkey.size();++i)//binary superkeys calculated
+        {
+            int key = 0;
+            for(int j=0;j<superkey.get(i).size();++j)
+            {
+                int index = Arrays.asList(attribute).lastIndexOf(superkey.get(i).get(j));
+                key = key | (int)Math.pow(2,index);
+            }
+            binsuper[i]=key;
+        } 
+        int bincandidate[]  = new int [ckey.size()];//binary candidate keys calculated
+        for(int i=0;i<ckey.size();++i)
+        {
+            int key = 0;
+            for(int j=0;j<ckey.get(i).size();++j)
+            {
+                int index = Arrays.asList(attribute).lastIndexOf(ckey.get(i).get(j));
+                key = key | (int)Math.pow(2,index);
+            }
+            bincandidate[i]=key;
+        }
+        int Bin[][] = new int[m][2];
+        keybin(attribute,FD,Bin);
+        System.out.print("\n");
+        check_2NF(Bin,bincandidate,attribute);
+        if(alpha!=1)
+        {
+            System.out.println("Relation is in 1NF");
+            HighestNF.setText("1NF");
+            finalKeys(finalRelations,Bin,attribute);
         }
         else
         {
-            Object[] row=new Object[n];  
-            String s[] = jTextArea3.getText().split("\\r?\\n");
-            ArrayList<String>arrList = new ArrayList<>(Arrays.asList(s)) ;
-            DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
-           // model.setColumnCount(0);
-            for (int i = 0; i < arrList.size(); i++) 
-                row[i]=arrList.get(i);
-            model.addRow(row);
+            check_3NF(Bin,bincandidate,binsuper,attribute);
+            if(beta!=1)
+            finalKeys(finalRelations,Bin,attribute);
+            else
+            {
+                bcNFmode(Bin,bincandidate,binsuper);
+                if(gamma!=1)
+                finalKeys(relation ,Bin,attribute);
+            }
+        }
+    }
+    public void finalKeys(ArrayList<Integer>relation ,int[][]binaryFD ,String attribute[])// input :relation in binary format ,initial Fds in binary format ,all attributes
+    {
+        for(int i=0;i<relation.size();++i)
+        {
+            System.out.print("\n\n");
+            DecomposedRelations.append(""+System.getProperty("line.separator"));
+            System.out.println("Relation "+ (i+1));
+            DecomposedRelations.append("Relation "+(i+1)+" : " +System.getProperty("line.separator"));
+            ArrayList <ArrayList<Integer>> FDcovered= new ArrayList <ArrayList<Integer>>();
+            ArrayList<String> R= new ArrayList<String>();
+           
+           // System.out.println(relation.get(i));
+            for(int j=0;j<attribute.length;++j)//check which all attributes are present in given relation
+            {
+                int p=(int)Math.pow(2,j);
+                if((relation.get(i) & p)==p)
+                {
+                    R.add(attribute[j]);    
+                }
+            }
+            System.out.println(R);
+            for(String a : R){
+                DecomposedRelations.append(a + ", ");
+             }
+             DecomposedRelations.append(System.getProperty("line.separator"));
+            
+            String R1[]= new String[R.size()];//converting it to string array
+            
+            for(int j=0;j<R.size();j++)
+            {
+                R1[j]=R.get(j);
+            }
+            for(int j=0;j<binaryFD.length ;j++)
+            {
+                if((relation.get(i)&binaryFD[j][0])== binaryFD[j][0])//check if the left side attributes of fd are present in relation
+                {
+                    if((relation.get(i)&binaryFD[j][1])!=0)// check if they are present on right side
+                    {
+                        ArrayList<Integer> temp= new ArrayList<Integer>();
+                        temp.add(relation.get(i)&binaryFD[j][0]);
+                        temp.add(relation.get(i)&binaryFD[j][1]);
+                        FDcovered.add(temp);
+                    }
+                }
+            }
+            System.out.print("FD :");
+            DecomposedFDs.append(System.getProperty("line.separator"));
+            DecomposedFDs.append("FDs for realtion "+ (i+1)+" :");
+            if(FDcovered.size()==0)
+            {
+                DecomposedFDs.append("None");
+                System.out.print("None");
+            }
+             
+            for(int j=0;j<FDcovered.size();++j)
+            {
+                System.out.println();
+                DecomposedFDs.append(System.getProperty("line.separator"));
+                ArrayList <String> Fdleft = new ArrayList <String>();
+                ArrayList <String> Fdright = new ArrayList <String>();
+                for(int k=0;k<attribute.length;k++)
+                {
+                    int p=(int)Math.pow(2,k);
+                    if((FDcovered.get(j).get(0) & p)==p)
+                    {
+                        Fdleft.add(attribute[k]);    
+                    }
+                    if((FDcovered.get(j).get(1) & p)==p)
+                    {
+                        Fdright.add(attribute[k]);    
+                    }
+                }
+                System.out.print(Fdleft.get(0));
+                DecomposedFDs.append(Fdleft.get(0));
+                for(int k=1;k<Fdleft.size();k++)
+                {
+                    System.out.print(","+Fdleft.get(k));
+                    DecomposedFDs.append(","+Fdleft.get(k));
+                }
+                System.out.print("->");
+                DecomposedFDs.append("->");
+                System.out.print(Fdright.get(0));
+                DecomposedFDs.append(Fdright.get(0));
+                for(int k=1;k<Fdright.size();k++)
+                {
+                    System.out.print(","+Fdright.get(k));
+                    DecomposedFDs.append(","+Fdright.get(k));
+                }
+            }
+            System.out.println();
+            DecomposedFDs.append(System.getProperty("line.separator"));
+           // System.out.println("FD "+FDcovered.size() +" R1 "+ R1.length);
+            cal_key(FDcovered,attribute,R1,relation.get(i),i);
+          // System.out.println("");
+        }
+    }
+    public void cal_key(ArrayList <ArrayList<Integer>> FDcovered ,String attribute[],String R1[],int relation,int sris)
+    {
+        Vector <Vector<String>> ckey= new Vector<Vector<String>>();
+        Vector <Vector<String>> superkey= new Vector<Vector<String>>();
+        int n1= attribute.length;
+        int n2=R1.length;
+        for(int i=1;i<=n2;++i)//no of elements in a candidate key
+        {
+            String data[] = new String[i]; 
+            combinationUtil(R1,data,0,n2-1,0,i,ckey);//generates all combinations and stores in ckey
+        }
+        for(int i=0;i<ckey.size();i++)
+        {
+            int ans=0;
+            for(int j=0;j<ckey.get(i).size();j++)
+            {
+                ans=ans|(int)Math.pow(2,Arrays.asList(attribute).indexOf(ckey.get(i).get(j)));
+            }
+           // System.out.println(ckey.get(i)+"="+ans+" ");
+            boolean change=true;
+            while(change)//run till a change happens in any of the iteration
+            {
+                int temp=ans;
+                for(int j=0;j<FDcovered.size();++j)
+                {
+                    if((ans & FDcovered.get(j).get(0))== FDcovered.get(j).get(0))//if element exists then check
+                    {
+                      ans=ans|FDcovered.get(j).get(1);
+                    }
+                }
+                if(temp==ans)
+                 change=false;
+            }
+            
+            if(ans!= relation )//remove the ones that don't give all the attributes
+            {
+                ckey.removeElementAt(i);
+                i--;
+            }
+        }
+        System.out.print("\nSuperkeys:  ");
+        DecomposedSKs.append(System.getProperty("line.separator")+"Superkeys for realtion "+ (sris+1)+" :  "+System.getProperty("line.separator"));
+        for(int i=0;i<ckey.size();++i)
+        {
+            superkey.add(ckey.elementAt(i));
+            System.out.print(superkey.elementAt(i)+" ");
+            DecomposedSKs.append(superkey.elementAt(i)+" ");
+        }
+        DecomposedSKs.append(System.getProperty("line.separator"));
+        for(int i=0;i<n2;i++)//
+        {
+            int min=n2;
+            
+            for(int j=0;j<ckey.size();++j)//for each attribute find the min size
+            {
+                // System.out.print(ckey.elementAt(j)+" ");
+                if(ckey.get(j).lastIndexOf(attribute[i])!=-1)
+                {
+                    if(ckey.get(j).size() < min)
+                    min=ckey.get(j).size();
+                }
+            }
+            for(int j=0;j<ckey.size();++j)
+            {
+                if(ckey.get(j).lastIndexOf(attribute[i])!=-1)
+                {
+                    if(ckey.get(j).size() > min)//if a key with size greater than min size exists remove it
+                    {
+                     ckey.removeElementAt(j);
+                     j--;
+                    }
+                }
+            }
+        }
+        System.out.print("\nCandidate Keys : ");
+        DecomposedCKs.append(System.getProperty("line.separator")+"Candidate keys for relation "+ (sris+1)+" :" +System.getProperty("line.separator"));
+        for(int i=0;i<ckey.size();++i)
+        {
+             System.out.print(ckey.elementAt(i)+" ");
+             DecomposedCKs.append(ckey.elementAt(i)+" ");
+        }
+        DecomposedCKs.append(System.getProperty("line.separator"));
+       
+    }
+
+    public static void keybin(String attribute[], String FD[],int Bin[][])
+    {
+        
+        int d = 0;
+        for(int i=0;i<m;i++)
+        {
+            int x = FD[i].indexOf("-");
+            String y = FD[i].substring(0,x);
+            for(int j=0;j<n;j++)
+            {
+                if(y.indexOf(attribute[j])!=-1)
+                d = d|((int)Math.pow(2,j));
+            }
+            Bin[i][0] = (int) d;
+            d=0;
+            y = FD[i].substring(x+2);
+            for(int j=0;j<n;j++)
+            {
+                if(y.indexOf(attribute[j])!=-1)
+                d = d|((int)Math.pow(2,j));
+            }
+            Bin[i][1] = (int) d;
+            d=0;
+        }
+        /*for(int i=0;i<m;i++)
+        {
+            System.out.println(Bin[i][0]+"->"+Bin[i][1]);
+        }*/
+    } 
+     public void check_2NF(int[][]binaryFD, int[]candidate ,String attribute[])
+    {
+        int primeatt=0;
+        ArrayList<Integer> not2NF= new ArrayList<Integer>();
+        ArrayList<Integer> removed= new ArrayList<Integer>();
+        for(int i=0;i<candidate.length;++i)
+        {
+            primeatt= primeatt | candidate[i];
+        }
+        for(int i=0;i<binaryFD.length;++i)
+        {
+            if((binaryFD[i][1]&primeatt) == binaryFD[i][1])
+            {
+              continue;
+            }
+            else
+            {
+              boolean flag2NF=true;
+              for(int j=0;j<candidate.length;++j)
+              {
+                 if((binaryFD[i][0]&candidate[j])== binaryFD[i][0] && (binaryFD[i][0]&candidate[j])!= candidate[j])
+                 {
+                     flag2NF=false;
+                 }
+              }
+              if (!flag2NF)
+              {
+               binaryFD[i][1]=( binaryFD[i][1]| primeatt)^primeatt;
+               boolean change=true;
+               while(change)
+               {
+                 for(int j=0;j<binaryFD.length;++j)
+                 {
+                     change=false;
+                     if((((binaryFD[j][0] | primeatt) ^ primeatt) & binaryFD[i][1] )!= 0 && (binaryFD[j][1] & binaryFD[i][1])!= binaryFD[j][1] && removed.indexOf(j)==-1)//first remove prime attribues from left side
+                     {
+                         int temp=(binaryFD[j][1] | primeatt)^primeatt;
+                         binaryFD[i][1]=binaryFD[i][1]|temp;
+                         removed.add(j);
+                         change = true;
+                     }
+                 }
+              }
+               not2NF.add(i);
+              }
+            }
+         }
+        if(not2NF.size()==0 )
+       {
+           System.out.println("Relation is in 2NF");
+           HighestNF.setText("2NF");
+          // MyFirstForm m=new MyFirstForm();
+          // m.printing2NF();
+           alpha=1;
+           
+       }
+       else
+       {
+           for(int i=0;i<not2NF.size();i++)
+            System.out.println(not2NF.get(i));
+           //System.out.println("false");
+            convert_2NF(not2NF,attribute,binaryFD,removed);
+       }
+    }
+    public static void convert_2NF(ArrayList<Integer>not2NF ,String attribute[],int[][]binaryFD,ArrayList<Integer> removed)
+    {
+        ArrayList<ArrayList<String>> relation= new ArrayList<ArrayList<String>>();
+        ArrayList<String>primary =new ArrayList<String>();
+        int k=(int)Math.pow(2,attribute.length)-1;
+        for(int i=0;i<not2NF.size();++i)
+        {
+            k=(k|binaryFD[not2NF.get(i)][1])^binaryFD[not2NF.get(i)][1];
+            boolean removedflag=false;
+            for(int j=0;j<removed.size();++j)
+            {
+                if(removed.get(j)==i)
+                {
+                 removedflag=true;
+                }
+            }
+            if(!removedflag)
+            {
+                k=k|binaryFD[not2NF.get(i)][0];
+            }
+            ArrayList<String>temp =new ArrayList<String>();
+            relation.add(temp);
+        }
+        for(int i=0;i<binaryFD.length;i++)
+        {
+            if(removed.indexOf(i)==-1 && not2NF.indexOf(i)==-1)
+            {
+                k=k|binaryFD[i][0];
+                k=k|binaryFD[i][1];
+            }
+        }
+        for(int i=0;i<attribute.length;++i)
+        {
+            int p=(int)Math.pow(2,i);
+            if((k&p)==p)
+            {
+                primary.add(attribute[i]);
+            }
+            for(int j=0;j<not2NF.size();++j)
+            {
+                if((binaryFD[not2NF.get(j)][0] &p)==p || (binaryFD[not2NF.get(j)][1] &p)==p )
+                {
+                    relation.get(j).add(attribute[i]);
+                }
+            }
+
+        }
+        //System.out.println(primary);
+        relation.add(primary);
+        // for(int i=0;i<relation.size();++i)
+        // {
+        //     System.out.println(relation.get(i));
+        // }
+        
+        for(int i=0;i<relation.size();i++)
+        {
+            int p=0;
+            for(int j=0;j<relation.get(i).size();j++)
+            {
+               p=p|(int)Math.pow(2,Arrays.asList(attribute).indexOf(relation.get(i).get(j))); 
+            }
+           finalRelations.add(p);
+        }
+
+    }
+    public void check_3NF(int[][]binaryFD, int[]candidate , int[]superKey,String attribute[])
+    {
+        int primeatt=0;
+        ArrayList<Integer> not3NF= new ArrayList<Integer>();
+        for(int i=0;i<candidate.length;++i)
+        {
+            primeatt= primeatt | candidate[i];
+        }
+        for(int i=0;i<binaryFD.length;++i)
+        {
+            boolean skeyflag=false;
+            for(int j=0;j<superKey.length;++j)
+            {
+                if(binaryFD[i][0]== superKey[j])
+                 skeyflag = true;
+                 
+            }
+            if(skeyflag==true)
+             continue;
+            else
+            {
+                if((binaryFD[i][1] & primeatt)== binaryFD[i][1])
+                 continue;
+                else
+                 {
+                    binaryFD[i][1]=( binaryFD[i][1]| primeatt)^primeatt;
+                    not3NF.add(i);
+                 }
+            }
+        }
+        if(not3NF.size()==0 )
+       {
+           System.out.println("Relation is in 3NF");
+           HighestNF.setText("3NF");
+           MyFirstForm.beta=1;
+       }
+       else
+       {
+            convert_3NF(not3NF,attribute,binaryFD);
+       }
+    }
+    public static void convert_3NF(ArrayList<Integer>not3NF ,String attribute[],int[][]binaryFD)
+    {
+        ArrayList<ArrayList<String>> relation= new ArrayList<ArrayList<String>>();
+        ArrayList<String>primary =new ArrayList<String>();
+        int k=(int)Math.pow(2,attribute.length)-1;
+        for(int i=0;i<not3NF.size();++i)
+        {
+            k=(k|binaryFD[not3NF.get(i)][1])^binaryFD[not3NF.get(i)][1];
+            k=k|binaryFD[not3NF.get(i)][0];
+            ArrayList<String>temp =new ArrayList<String>();
+            relation.add(temp);
+        }
+        for(int i=0;i<attribute.length;++i)
+        {
+            int p=(int)Math.pow(2,i);
+            if((k&p)==p)
+            {
+                primary.add(attribute[i]);
+            }
+            for(int j=0;j<not3NF.size();++j)
+            {
+                if((binaryFD[not3NF.get(j)][0] &p)==p || (binaryFD[not3NF.get(j)][1] &p)==p )
+                {
+                    relation.get(j).add(attribute[i]);
+                }
+            }
+
+        }
+        //System.out.println(primary);
+        relation.add(primary);
+        // for(int i=0;i<relation.size();++i)
+        // {
+        //     System.out.println(relation.get(i));
+        // }
+        
+        for(int i=0;i<relation.size();i++)
+        {
+            int p=0;
+            for(int j=0;j<relation.get(i).size();j++)
+            {
+               p=p|(int)Math.pow(2,Arrays.asList(attribute).indexOf(relation.get(i).get(j))); 
+            }
+           finalRelations.add(p);
+        }
+
+    }
+     public void check_BCNF(int[] candidate,int[] superkey,int[][] FD,int[][] eachFD)
+    {
+        // = new int[FD.length][3];
+        for(int i=0;i<FD.length;i++)
+        {
+            eachFD[i][0] = FD[i][0];
+            eachFD[i][1] = FD[i][1];
+            eachFD[i][2] = FD[i][2];
+        }
+        for(int i=0;i<eachFD.length;i++)
+        {
+                if(eachFD[i][2]==3)
+                {
+                        for(int j=0;j<superkey.length;j++)
+                        {
+                            if(eachFD[i][0]==superkey[j])
+                            {
+                                eachFD[i][2]=4;
+                                count++;
+                                break;
+                            }
+                        }
+                }
+        }
+        if((FD.length-count)==0)
+        {
+            System.out.println("Relation is in BCNF");
+            HighestNF.setText("BCNF");
+            gamma = 1;
+            return;
+        }
+        else
+        {
+            decompose(eachFD);
+        }
+        //return eachFD;
+    }
+    public void bcNFmode(int FD[][],int candidate[], int[] superkey)
+    {
+        int FD1[][] = new int[FD.length][3];
+        for(int i=0;i<FD1.length;i++)
+        {
+            FD1[i][0] = FD[i][0];
+            FD1[i][1] = FD[i][1];
+            FD1[i][2] = 3;
+        }
+        int eachFD[][] = new int[FD.length][3];
+        check_BCNF(candidate,superkey,FD1,eachFD);
+    }
+    public static void decompose(int eachFD[][])
+    {
+        int FD1[][] = new int[count][2];
+        int x = 0;
+        int k=0;
+        for(int i=0;i<eachFD.length;i++)
+        {
+            if(eachFD[i][2]==4)
+            {
+                FD1[k][0] = eachFD[i][0];
+                FD1[k][1] = eachFD[i][1];
+                x = x|FD1[k][0]|FD1[k][1];
+                k++;
+            }
         }
         
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-                // TODO add your handling code here:
-                this.jTextArea3.setText("");
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
-        try{
-            int selectedRowIndex=jTable1.getSelectedRow();
-            model.removeRow(selectedRowIndex);
+        relation.add(x);
+        
+        for(int i=0;i<eachFD.length;i++)
+        {
+            x=0;
+            if(eachFD[i][2]==3)
+            {
+                x = x|eachFD[i][0]|eachFD[i][1];
+                relation.add(x);
+            }
         }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(this,"Select a row to delete");
-        }
-    }//GEN-LAST:event_jButton4ActionPerformed
-
+        //System.out.println(relation);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -389,27 +1332,45 @@ public class MyFirstForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JTextArea CandidateKeys;
+    private javax.swing.JTextArea DecomposedCKs;
+    private javax.swing.JTextArea DecomposedFDs;
+    private javax.swing.JTextArea DecomposedRelations;
+    private javax.swing.JTextArea DecomposedSKs;
+    private javax.swing.JPanel Heading;
+    private javax.swing.JTextArea HighestNF;
+    private javax.swing.JTextArea columnNames;
+    private javax.swing.JTextArea fdNames;
     private javax.swing.JButton jButton5;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JTextField noOfColumns;
+    private javax.swing.JTextField noOfFDs;
+    private javax.swing.JTextArea superKeys;
     // End of variables declaration//GEN-END:variables
 }
