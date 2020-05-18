@@ -938,9 +938,9 @@ static ArrayList<Integer> finalRelations= new ArrayList<Integer>();
             DecomposedSKs.append(superkey.elementAt(i)+" ");
         }
         DecomposedSKs.append(System.getProperty("line.separator"));
-        for(int i=0;i<n2;i++)//
+        for(int i=0;i<n1;i++)//
         {
-            int min=n2;
+            int min=n1;
             
             for(int j=0;j<ckey.size();++j)//for each attribute find the min size
             {
