@@ -58,6 +58,15 @@ public class bcNF
         int k=0;
         for(int i=0;i<eachFD.length;i++)
         {
+            x=0;
+            if(eachFD[i][2]==3)
+            {
+                x = x|eachFD[i][0]|eachFD[i][1];
+                relation.add(x);
+            }
+        }
+        for(int i=0;i<eachFD.length;i++)
+        {
             if(eachFD[i][2]==4)
             {
                 FD1[k][0] = eachFD[i][0];
@@ -69,15 +78,7 @@ public class bcNF
         
         relation.add(x);
         
-        for(int i=0;i<eachFD.length;i++)
-        {
-            x=0;
-            if(eachFD[i][2]==3)
-            {
-                x = x|eachFD[i][0]|eachFD[i][1];
-                relation.add(x);
-            }
-        }
+        
         //System.out.println(relation);
     }
 }

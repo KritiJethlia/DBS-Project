@@ -354,13 +354,14 @@ public class closure
     // Finding candidate Keys and super keys for the relations formed after decomposition
     public static void finalKeys(ArrayList<Integer>relation ,int[][]binaryFD ,String attribute[])// input :relation in binary format ,initial Fds in binary format ,all attributes
     {
+
+        ArrayList<Integer> NotFD = new ArrayList <Integer>();
         for(int i=0;i<relation.size();++i)
         {
             System.out.print("\n\n");
             System.out.println("Relation "+ (i+1));
             ArrayList <ArrayList<Integer>> FDcovered= new ArrayList <ArrayList<Integer>>();
             ArrayList<String> R= new ArrayList<String>();
-           
            // System.out.println(relation.get(i));
             for(int j=0;j<attribute.length;++j)//check which all attributes are present in given relation
             {
@@ -379,10 +380,11 @@ public class closure
             }
             for(int j=0;j<binaryFD.length ;j++)
             {
-                if((relation.get(i)&binaryFD[j][0])== binaryFD[j][0])//check if the left side attributes of fd are present in relation
+                if((relation.get(i)&binaryFD[j][0])== binaryFD[j][0] && !NotFD.contains(j))//check if the left side attributes of fd are present in relation
                 {
                     if((relation.get(i)&binaryFD[j][1])!=0)// check if they are present on right side
                     {
+                        NotFD.add(j);
                         ArrayList<Integer> temp= new ArrayList<Integer>();
                         temp.add(relation.get(i)&binaryFD[j][0]);
                         temp.add(relation.get(i)&binaryFD[j][1]);
