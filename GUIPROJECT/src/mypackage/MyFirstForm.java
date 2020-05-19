@@ -743,7 +743,7 @@ static ArrayList<Integer> finalRelations= new ArrayList<Integer>();
         for(int i=0;i<ckey.size();++i)
         {
             System.out.print(ckey.elementAt(i)+" ");
-            CandidateKeys.append(superkey.elementAt(i)+System.getProperty("line.separator"));
+            CandidateKeys.append(ckey.elementAt(i)+"\n");
         }
         
         int[] binsuper = new int [superkey.size()];
