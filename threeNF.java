@@ -3,6 +3,7 @@ import java.util.*;
 import java.lang.*;
 public class threeNF
 {
+    static ArrayList<Integer> finalRelations= new ArrayList<Integer>();
     // public static void main(String[] args) {
     //     int [][]binaryFD= new int[3][2];
     //     binaryFD[0][0]=1;
@@ -63,6 +64,7 @@ public class threeNF
         if(not3NF.size()==0 )
        {
            System.out.println("Relation is in 3NF");
+           closure.beta=1;
        }
        else
        {
@@ -103,7 +105,7 @@ public class threeNF
         // {
         //     System.out.println(relation.get(i));
         // }
-        ArrayList<Integer> finalRelations= new ArrayList<Integer>();
+        
         for(int i=0;i<relation.size();i++)
         {
             int p=0;
