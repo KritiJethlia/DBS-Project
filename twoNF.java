@@ -73,9 +73,11 @@ public class twoNF
                      change=false;
                      if((((binaryFD[j][0] | primeatt) ^ primeatt) & binaryFD[i][1] )!= 0 && (binaryFD[j][1] & binaryFD[i][1])!= binaryFD[j][1] && removed.indexOf(j)==-1)//first remove prime attribues from left side
                      {
-                         int temp=(binaryFD[j][1] | primeatt)^primeatt;
-                         binaryFD[i][1]=binaryFD[i][1]|temp;
+                         //int temp=(binaryFD[j][1] | primeatt)^primeatt;
+                         //binaryFD[i][1]=binaryFD[i][1]|temp;
+                         binaryFD[i][1]=binaryFD[i][1]|binaryFD[j][1];
                          removed.add(j);
+                        // System.out.println("p"+removed+binaryFD[i][1]+"i"+i);
                          change = true;
                      }
                  }
@@ -150,13 +152,13 @@ public class twoNF
         // {
         //     System.out.println(relation.get(i));
         // }
-        
+
         for(int i=0;i<relation.size();i++)
         {
             int p=0;
             for(int j=0;j<relation.get(i).size();j++)
             {
-               p=p|(int)Math.pow(2,Arrays.asList(attribute).indexOf(relation.get(i).get(j))); 
+               p=p|(int)Math.pow(2,Arrays.asList(attribute).indexOf(relation.get(i).get(j)));
             }
            finalRelations.add(p);
         }

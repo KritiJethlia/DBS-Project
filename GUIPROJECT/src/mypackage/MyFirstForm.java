@@ -769,9 +769,11 @@ static ArrayList<Integer> finalRelations= new ArrayList<Integer>();
             bincandidate[i]=key;
         }
         int Bin[][] = new int[m][2];
+        int Bin1[][] = new int[m][2];
         keybin(attribute,FD,Bin);
+        keybin(attribute,FD,Bin1);
         System.out.print("\n");
-        check_2NF(Bin,bincandidate,attribute);
+        check_2NF(Bin1,bincandidate,attribute);
         if(alpha!=1)
         {
             System.out.println("Relation is in 1NF");
@@ -780,12 +782,12 @@ static ArrayList<Integer> finalRelations= new ArrayList<Integer>();
         }
         else
         {
-            check_3NF(Bin,bincandidate,binsuper,attribute);
+            check_3NF(Bin1,bincandidate,binsuper,attribute);
             if(beta!=1)
             finalKeys(finalRelations,Bin,attribute);
             else
             {
-                bcNFmode(Bin,bincandidate,binsuper);
+                bcNFmode(Bin1,bincandidate,binsuper);
                 if(gamma!=1)
                 finalKeys(relation ,Bin,attribute);
             }
@@ -1039,8 +1041,9 @@ static ArrayList<Integer> finalRelations= new ArrayList<Integer>();
                      change=false;
                      if((((binaryFD[j][0] | primeatt) ^ primeatt) & binaryFD[i][1] )!= 0 && (binaryFD[j][1] & binaryFD[i][1])!= binaryFD[j][1] && removed.indexOf(j)==-1)//first remove prime attribues from left side
                      {
-                         int temp=(binaryFD[j][1] | primeatt)^primeatt;
-                         binaryFD[i][1]=binaryFD[i][1]|temp;
+                        //int temp=(binaryFD[j][1] | primeatt)^primeatt;
+                         //binaryFD[i][1]=binaryFD[i][1]|temp;
+                         binaryFD[i][1]=binaryFD[i][1]|binaryFD[j][1];
                          removed.add(j);
                          change = true;
                      }

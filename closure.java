@@ -276,9 +276,11 @@ public class closure
             bincandidate[i]=key;
         }
         int Bin[][] = new int[m][2];
+        int Bin1[][] = new int[m][2];
         keybin(attribute,FD,Bin);
+        keybin(attribute,FD,Bin1);
         System.out.print("\n");
-        twoNF.check_2NF(Bin,bincandidate,attribute);
+        twoNF.check_2NF(Bin1,bincandidate,attribute);
         if(alpha!=1)
         {
             System.out.println("Relation is in 1NF");
@@ -286,12 +288,12 @@ public class closure
         }
         else
         {
-            threeNF.check_3NF(Bin,bincandidate,binsuper,attribute);
+            threeNF.check_3NF(Bin1,bincandidate,binsuper,attribute);
             if(beta!=1)
             finalKeys(threeNF.finalRelations,Bin,attribute);
             else
             {
-                bcNF.bcNFmode(Bin,bincandidate,binsuper);
+                bcNF.bcNFmode(Bin1,bincandidate,binsuper);
                 if(gamma!=1)
                 finalKeys(bcNF.relation ,Bin,attribute);
             }
