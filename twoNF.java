@@ -3,6 +3,7 @@ import java.util.*;
 import java.lang.*;
 public class twoNF
 {
+    static ArrayList<Integer> finalRelations= new ArrayList<Integer>();
     // public static void main(String[] args) {
     //     int [][]binaryFD= new int[5][2];
     //     binaryFD[0][0]=7;
@@ -86,12 +87,13 @@ public class twoNF
         if(not2NF.size()==0 )
        {
            System.out.println("Relation is in 2NF");
+           closure.alpha=1;
        }
        else
        {
            for(int i=0;i<not2NF.size();i++)
             System.out.println(not2NF.get(i));
-           System.out.println("false");
+           //System.out.println("false");
             convert_2NF(not2NF,attribute,binaryFD,removed);
        }
     }
@@ -148,7 +150,7 @@ public class twoNF
         // {
         //     System.out.println(relation.get(i));
         // }
-        ArrayList<Integer> finalRelations= new ArrayList<Integer>();
+        
         for(int i=0;i<relation.size();i++)
         {
             int p=0;

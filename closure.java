@@ -4,11 +4,15 @@ import java.util.*;
 public class closure
 {   //assume there's an array containing names of attributes 
     //array containing Func Dep as a string  "A,B->C" or "A->B,C"
+    static int alpha=0,beta=0,gamma=0;
     static int n;
     static int m;
     public static void main(String[] args) 
     {
-        input(10,5);  //calling without object
+        Scanner sc = new Scanner(System.in);
+        int x = sc.nextInt();
+        int y = sc.nextInt();
+        input(x,y);  //calling without object
     }
 
     public static void calc_closure(String attribute[], String FD[])
@@ -37,7 +41,7 @@ public class closure
                 if(l.indexOf(attribute[i])!=-1)
                 cl[i]++;
             }
-            System.out.println(cl[i]);
+            //System.out.println(cl[i]);
         }
         int p=0;
         int trial = 0;
@@ -273,9 +277,25 @@ public class closure
         }
         int Bin[][] = new int[m][2];
         keybin(attribute,FD,Bin);
+        System.out.print("\n");
         twoNF.check_2NF(Bin,bincandidate,attribute);
-        System.out.println("\n"+"3 NF check");
-        threeNF.check_3NF(Bin,bincandidate,binsuper,attribute);
+        if(alpha!=1)
+        {
+            System.out.println("Relation is in 1NF");
+            finalKeys(twoNF.finalRelations,Bin,attribute);
+        }
+        else
+        {
+            threeNF.check_3NF(Bin,bincandidate,binsuper,attribute);
+            if(beta!=1)
+            finalKeys(threeNF.finalRelations,Bin,attribute);
+            else
+            {
+                bcNF.bcNFmode(Bin,bincandidate,binsuper);
+                if(gamma!=1)
+                finalKeys(bcNF.relation ,Bin,attribute);
+            }
+        }
     }
     
     static void combinationUtil(String arr[], String data[], int start, int end, int index, int r,Vector <Vector<String>> ckey) 
@@ -325,10 +345,10 @@ public class closure
             Bin[i][1] = (int) d;
             d=0;
         }
-        for(int i=0;i<m;i++)
+        /*for(int i=0;i<m;i++)
         {
             System.out.println(Bin[i][0]+"->"+Bin[i][1]);
-        }
+        }*/
     } 
 
     // Finding candidate Keys and super keys for the relations formed after decomposition
@@ -352,6 +372,7 @@ public class closure
             }
             System.out.println(R);
             String R1[]= new String[R.size()];//converting it to string array
+            
             for(int j=0;j<R.size();j++)
             {
                 R1[j]=R.get(j);
